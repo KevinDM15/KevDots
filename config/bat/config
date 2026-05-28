@@ -1,0 +1,16 @@
+# Bat configuration file
+
+# Show line numbers
+--number
+
+# Use Catppuccin Mocha theme (comes with bat by default)
+--theme="Monokai Extended"
+
+# Show git modifications (if in a git repo)
+--map-syntax .gitignore:.gitignore
+
+# Use paging only if output is larger than the terminal height
+--paging=auto
+
+# Italic text support
+--italic-text=always

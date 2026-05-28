@@ -1,0 +1,110 @@
+// Zellij config — purple/dark theme
+// Docs: https://zellij.dev/documentation
+
+theme "purple-dark"
+default_layout "compact"
+pane_frames false
+simplified_ui false
+copy_on_select true
+scroll_buffer_size 10000
+
+keybinds {
+    normal {
+        // Paneles
+        bind "Ctrl n"    { NewPane; }
+        bind "Ctrl x"    { CloseFocus; }
+        bind "Ctrl \\"   { NewPane "right"; }
+        bind "Ctrl -"    { NewPane "down"; }
+
+        // Modos de navegación
+        bind "Ctrl p"    { SwitchToMode "pane"; }
+        bind "Ctrl y"    { SwitchToMode "tab"; }
+
+        // Scroll
+        bind "Ctrl u"    { PageScrollUp; }
+        bind "Ctrl d"    { PageScrollDown; }
+
+        // Liberar para el shell
+        unbind "Ctrl h"
+        unbind "Ctrl j"
+        unbind "Ctrl k"
+        unbind "Ctrl l"
+        unbind "Ctrl f"
+        unbind "Ctrl b"
+        unbind "Ctrl q"
+        unbind "Ctrl g"
+    }
+
+    // Ctrl+p → modo pane → hjkl para navegar → Escape para salir
+    pane {
+        bind "h" "Left"  { MoveFocus "Left"; }
+        bind "l" "Right" { MoveFocus "Right"; }
+        bind "j" "Down"  { MoveFocus "Down"; }
+        bind "k" "Up"    { MoveFocus "Up"; }
+        bind "H"         { Resize "Increase Left"; }
+        bind "L"         { Resize "Increase Right"; }
+        bind "J"         { Resize "Increase Down"; }
+        bind "K"         { Resize "Increase Up"; }
+        bind "f"         { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        bind "Esc"       { SwitchToMode "normal"; }
+        bind "Ctrl p"    { SwitchToMode "normal"; }
+    }
+
+    // Ctrl+y → modo tab → n/p navegar, c nueva tab, x cerrar → Escape salir
+    tab {
+        bind "n" "Right"  { GoToNextTab; }
+        bind "p" "Left"   { GoToPreviousTab; }
+        bind "c"          { NewTab; SwitchToMode "normal"; }
+        bind "x"          { CloseTab; SwitchToMode "normal"; }
+        bind "r"          { SwitchToMode "RenameTab"; }
+        bind "1"          { GoToTab 1; SwitchToMode "normal"; }
+        bind "2"          { GoToTab 2; SwitchToMode "normal"; }
+        bind "3"          { GoToTab 3; SwitchToMode "normal"; }
+        bind "4"          { GoToTab 4; SwitchToMode "normal"; }
+        bind "5"          { GoToTab 5; SwitchToMode "normal"; }
+        bind "Esc"        { SwitchToMode "normal"; }
+        bind "Ctrl y"     { SwitchToMode "normal"; }
+    }
+
+    renametab {
+        bind "Enter"      { SwitchToMode "normal"; }
+        bind "Esc"        { UndoRenameTab; SwitchToMode "normal"; }
+    }
+}
+
+themes {
+    purple-dark {
+        ribbon_selected {
+            base        235 213 255
+            background   90  40 130
+            emphasis_0  200 130 255
+            emphasis_1  255 255 255
+            emphasis_2  120 200 240
+            emphasis_3  240 100 220
+        }
+        ribbon_unselected {
+            base        160 130 190
+            background   20   5  35
+            emphasis_0  100  60 150
+            emphasis_1  200 180 220
+            emphasis_2   80 160 200
+            emphasis_3  180  80 200
+        }
+        text_selected {
+            base        235 213 255
+            background   60  20  90
+            emphasis_0  200 130 255
+            emphasis_1  255 255 255
+            emphasis_2  120 200 240
+            emphasis_3  240 100 220
+        }
+        text_unselected {
+            base        160 130 190
+            background   13   0  16
+            emphasis_0  100  60 150
+            emphasis_1  200 180 220
+            emphasis_2   80 160 200
+            emphasis_3  180  80 200
+        }
+    }
+}

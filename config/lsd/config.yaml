@@ -1,0 +1,33 @@
+# LSD Configuration File
+
+# Color scheme
+color:
+  when: auto
+
+# Icons configuration
+icons:
+  when: auto
+
+# Layout (options: grid, list)
+layout: grid
+
+# Indicators (whether to show file type indicators)
+indicators: true
+
+# Sorting options
+sorting:
+  column: none
+  reverse: false
+  group-dirs: first
+
+# Size formatting (options: default, short, bytes)
+size: default
+
+# Date format
+date: date
+
+# Permission display
+permission: rwx
+
+# Show owner
+no-symlink: false

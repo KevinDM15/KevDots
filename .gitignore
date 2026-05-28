@@ -1,0 +1,8 @@
+# Credenciales y tokens — NUNCA commitear
+config/claude/mcp.json
+config/zsh/env.zsh
+
+# Caché y archivos temporales
+config/nvim/.luarc.json
+*.DS_Store
+*.log

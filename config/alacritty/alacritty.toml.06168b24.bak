@@ -1,0 +1,83 @@
+[terminal]
+shell = { program = "/opt/homebrew/bin/zellij", args = [] }
+
+[window]
+opacity = 0.85
+blur = true
+padding = { x = 16, y = 12 }
+decorations = "Buttonless"
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+bold   = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+size = 14.0
+
+[colors]
+[colors.primary]
+background = "#0d0010"
+foreground = "#e0d0f0"
+
+[colors.normal]
+black   = "#1a0020"
+red     = "#f07070"
+green   = "#a0e0b0"
+yellow  = "#e0c070"
+blue    = "#9080f0"
+magenta = "#c070e0"
+cyan    = "#70c0e0"
+white   = "#d0c0e0"
+
+[colors.bright]
+black   = "#3a1a4a"
+red     = "#ff9090"
+green   = "#b0f0c0"
+yellow  = "#f0d080"
+blue    = "#b090ff"
+magenta = "#e080f0"
+cyan    = "#90d0f0"
+white   = "#f0e8f8"
+
+[colors.cursor]
+cursor = "#c070e0"
+text   = "#0d0010"
+
+[colors.selection]
+background = "#5a2080"
+text       = "#f0e8f8"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 600
+
+[scrolling]
+history = 10000
+multiplier = 5
+
+[keyboard]
+bindings = [
+  # Tabs (requiere soporte de shell multiplexer — funciona bien con tmux/zellij)
+  { key = "T",          mods = "Command",       action = "CreateNewWindow" },
+  { key = "Return",     mods = "Command|Shift",  action = "ToggleFullscreen" },
+
+  # Scroll
+  { key = "K",          mods = "Command",       action = "ScrollLineUp" },
+  { key = "J",          mods = "Command",       action = "ScrollLineDown" },
+  { key = "U",          mods = "Command",       action = "ScrollPageUp" },
+  { key = "D",          mods = "Command",       action = "ScrollPageDown" },
+
+  # Tamaño de fuente
+  { key = "Plus",       mods = "Command",       action = "IncreaseFontSize" },
+  { key = "Minus",      mods = "Command",       action = "DecreaseFontSize" },
+  { key = "Key0",       mods = "Command",       action = "ResetFontSize" },
+
+  # Copiar / Pegar
+  { key = "C",          mods = "Command",       action = "Copy" },
+  { key = "V",          mods = "Command",       action = "Paste" },
+]
+
+[hints]
+enabled = [
+  { regex = "(https?://|ftp://|file:///)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+", command = "open", hyperlinks = true, post_processing = true, persist = false, mouse = { enabled = true, mods = "Control" }, binding = { key = "U", mods = "Control|Shift" } },
+]

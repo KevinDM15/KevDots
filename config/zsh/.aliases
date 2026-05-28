@@ -1,0 +1,151 @@
+# === ZSH Aliases Configuration ===
+# Organized by category for easy maintenance
+
+# === Navigation ===
+alias cd..="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="cd ~"
+alias c="clear"
+
+# === Zoxide Navigation ===
+# z <directory>  - Jump to a directory you've visited frequently
+# z -i            - Interactive search with fzf
+# zi              - Interactive selection (alias below)
+alias zi="zoxide query -i"
+
+# === FZF Search Aliases ===
+# Ctrl+R        - Search in command history (built-in)
+# Ctrl+T        - Search files in current directory (built-in)
+# Alt+C         - Search and cd to directory (built-in)
+alias ff="fzf"                                          # Basic fzf search
+alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill -9"  # Fuzzy kill process
+alias fvim="vim \$(fzf)"                                # Open file in vim with fzf
+alias fcode="open -a Cursor \$(fzf)"                    # Open file in Cursor with fzf
+
+# === List & Directory (LSD - Modern ls replacement) ===
+alias ls="lsd"                              # Use lsd instead of ls
+alias l="lsd -lh"                           # Simple listing
+alias la="lsd -lhA"                         # Show all with hidden files
+alias ll="lsd -lhA --group-dirs first"      # Long format, group directories first
+alias lh="lsd -lhS"                         # Sort by size
+alias lt="lsd -lhtr"                        # Sort by time (oldest first)
+alias ltr="lsd -ltr"                        # Reverse time sort
+alias ldir="lsd -lh --depth 2"              # Show directories up to 2 levels deep
+alias ltree="lsd --tree"                    # Tree view
+
+# === File Operations ===
+alias mkdir="mkdir -pv"  # Create parent directories and verbose
+alias cp="cp -iv"  # Interactive and verbose
+alias mv="mv -iv"  # Interactive and verbose
+alias rm="rm -i"  # Confirm before delete (safety first!)
+alias rmf="rm -rf"  # Force remove (use with caution!)
+alias tree="tree -L 2"  # Show tree with 2 levels depth
+
+# === Git Aliases ===
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gb="git branch"
+alias gco="git checkout"
+alias gd="git diff"
+alias gl="git log --oneline -10"
+alias gm="git merge"
+alias gr="git reset"
+alias gst="git stash"
+alias gsp="git stash pop"
+
+# === Development ===
+alias node="node"
+alias npm="npm"
+alias npmi="npm install"
+alias npmg="npm install -g"
+alias npmu="npm update"
+alias npmr="npm run"
+alias npms="npm start"
+alias npmt="npm test"
+alias bun="bun"
+alias buni="bun install"
+alias bunr="bun run"
+alias bunt="bun test"
+
+# === Project Navigation (Your Custom) ===
+alias mailroom="cd ~/Documents/mailroom"
+alias common-health="cd ~/Documents/projects/Common_Health_Mobile"
+alias portfolio-kevin="cd ~/Documents/projects/portfolio-kevin"
+alias cuc-alarms="cd ~/Documents/projects/cuc/consultas_api"
+alias cuc-consultas="cd ~/Documents/projects/cuc/consultas"
+
+# === Editor Shortcuts ===
+alias cursor="open -a Cursor"
+alias windsurf="/Applications/Windsurf.app/Contents/Resources/app/bin/windsurf"
+alias code="open -a 'Visual Studio Code'"
+alias vim="nvim"  # Use neovim if installed, otherwise vim
+
+# === System Info ===
+alias myip="curl https://ipinfo.io/json"
+alias localip="ifconfig | grep -A1 'inet '"
+alias ports="lsof -i -P -n | grep LISTEN"
+alias diskspace="du -sh *"
+alias usedspace="df -h"
+
+# === Android Development ===
+alias emulator="~/Library/Android/sdk/emulator/emulator"
+alias adb="~/Library/Android/sdk/platform-tools/adb"
+
+# === Bat - Cat replacement ===
+alias cat="bat"                             # Use bat instead of cat
+alias catl="bat -l"                         # Specify language
+alias catp="bat --plain"                    # Plain text (no line numbers)
+alias cats="bat --style=numbers"            # Show only line numbers
+
+# === TheFuck - Command correction ===
+# Type 'fuck' or 'thefuck' after a wrong command
+# Example: $ git comit -m "test" → fuck → git commit -m "test"
+
+# === Productivity ===
+alias grep="grep --color=auto"  # Highlight grep matches
+alias less="less -R"  # Preserve colors in less
+alias h="history"
+alias j="jobs"
+alias reload="source ~/.zshrc && echo 'ZSH config reloaded!'"
+alias aliases="cat ~/.aliases"  # Show all aliases (uses bat now)
+alias aliae="vim ~/.aliases"  # Edit aliases
+
+# === Network ===
+alias ping="ping -c 5"  # Limit ping to 5 packets
+alias netstat="netstat -tulpn"
+alias flush-cache="sudo dscacheutil -flushcache"
+
+# === Docker (if you use it) ===
+# alias docker="docker"
+# alias dc="docker-compose"
+# alias dps="docker ps"
+# alias dpsa="docker ps -a"
+# alias dim="docker images"
+
+# === Claude ===
+alias cr='claude --resume'
+alias cl='claude'
+alias clogin='claude auth login'
+alias clogout='claude auth logout'
+
+# Múltiples cuentas Claude
+alias cl-personal='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/personal claude'
+alias cl-elsol='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/elsol claude'
+alias cl-rocket='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/rocketcode claude'
+alias clogin-personal='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/personal claude auth login'
+alias clogin-elsol='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/elsol claude auth login'
+alias clogin-rocket='CLAUDE_CONFIG_DIR=/Users/kevindm14/.claude-accounts/rocketcode claude auth login'
+
+# === Shortcuts para tareas comunes ===
+alias update-brew="brew update && brew upgrade"
+alias update-npm="npm update -g"
+alias weather="curl wttr.in"
+alias todo="cat ~/todo.txt"
+alias notes="vim ~/notes.txt"

@@ -1,0 +1,60 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[╭─](fg:#5a2080) $directory$git_branch$git_status$nodejs$python$golang$rust
+[╰─](fg:#5a2080) $character"""
+
+add_newline = false
+
+[directory]
+style = "bold fg:#9080f0"
+format = "[$path ]($style)"
+truncation_length = 4
+truncation_symbol = "…/"
+
+[git_branch]
+style = "fg:#e080f0"
+format = "[$branch ]($style)"
+symbol = ""
+
+[git_status]
+style = "fg:#f07070"
+ahead = "↑${count}"
+behind = "↓${count}"
+modified = "*"
+staged = "+"
+untracked = "?"
+deleted = "-"
+format = "[$ahead_behind$staged$modified$untracked$deleted ]($style)"
+
+[nodejs]
+style = "fg:#a0e0b0"
+format = "[node:$version ]($style)"
+symbol = ""
+
+[python]
+style = "fg:#a0e0b0"
+format = "[py:$version ]($style)"
+symbol = ""
+
+[golang]
+style = "fg:#a0e0b0"
+format = "[go:$version ]($style)"
+symbol = ""
+
+[rust]
+style = "fg:#a0e0b0"
+format = "[rs:$version ]($style)"
+symbol = ""
+
+[time]
+disabled = true
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#c070e0"
+format = "[$duration ]($style)"
+
+[character]
+success_symbol = "[❯](bold fg:#c070e0)"
+error_symbol = "[❯](bold fg:#f07070)"
