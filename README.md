@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./LOGO_KEVDOTS.png" alt="KevDots" width="400" />
+  <img src="./assets/LOGO_KEVDOTS.png" alt="KevDots" width="400" />
 </p>
 
 # KevDots
