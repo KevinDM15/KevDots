@@ -1,0 +1,46 @@
+name: Bump Homebrew Formula
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release info
+        id: release
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          URL="https://github.com/KevinDM15/KevDots/archive/refs/tags/${VERSION}.tar.gz"
+          SHA256=$(curl -fsSL "$URL" | shasum -a 256 | awk '{print $1}')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "sha256=$SHA256" >> $GITHUB_OUTPUT
+
+      - name: Checkout homebrew-kevdots
+        uses: actions/checkout@v4
+        with:
+          repository: KevinDM15/homebrew-kevdots
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          path: homebrew-kevdots
+
+      - name: Update formula
+        run: |
+          VERSION="${{ steps.release.outputs.version }}"
+          URL="${{ steps.release.outputs.url }}"
+          SHA256="${{ steps.release.outputs.sha256 }}"
+
+          sed -i "s|url \".*\"|url \"$URL\"|" homebrew-kevdots/Formula/kevdots.rb
+          sed -i "s|sha256 \".*\"|sha256 \"$SHA256\"|" homebrew-kevdots/Formula/kevdots.rb
+
+          echo "Updated to $VERSION (sha256: $SHA256)"
+
+      - name: Commit and push
+        run: |
+          cd homebrew-kevdots
+          git config user.name "kevindm15"
+          git config user.email "kevindiazm.14@hotmail.com"
+          git add Formula/kevdots.rb
+          git commit -m "feat: bump to ${{ steps.release.outputs.version }}"
+          git push
