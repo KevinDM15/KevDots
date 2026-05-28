@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./LOGO_KEVDOTS.png" alt="KevDots" width="400" />
+</p>
+
 # KevDots
 
 Personal dotfiles for macOS — Alacritty + Zellij + LazyVim + Starship + Zsh.
