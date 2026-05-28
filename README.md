@@ -17,7 +17,23 @@ Personal dotfiles for macOS — Alacritty + Zellij + LazyVim + Starship + Zsh.
 | [Zsh](https://zsh.org) + Oh My Zsh | Shell |
 | [Claude Code](https://claude.ai/code) | AI assistant in terminal |
 
-## Quick Install
+## Install
+
+**macOS (Homebrew)**
+
+```sh
+brew tap KevinDM15/kevdots
+brew install kevdots
+kevdots install
+```
+
+**Linux / macOS (curl)**
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/KevinDM15/KevDots/main/scripts/curl-install.sh | sh
+```
+
+**Manual**
 
 ```sh
 git clone https://github.com/KevinDM15/KevDots.git ~/KevDots
