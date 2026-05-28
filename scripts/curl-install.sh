@@ -12,28 +12,21 @@ echo "KevDots installer"
 echo "-----------------"
 echo ""
 
-# Verificar dependencias mínimas
 if ! command -v git &>/dev/null; then
-  echo "Error: git no está instalado. Instalalo primero."
+  echo "Error: git is not installed."
   exit 1
 fi
 
-if ! command -v zsh &>/dev/null; then
-  echo "Error: zsh no está instalado. Instalalo primero."
-  exit 1
-fi
-
-# Clonar o actualizar
 if [ -d "$DEST/.git" ]; then
-  echo "-> KevDots ya existe, actualizando..."
+  echo "-> KevDots already exists, updating..."
   git -C "$DEST" pull --ff-only
 else
-  echo "-> Clonando KevDots..."
+  echo "-> Cloning KevDots..."
   git clone "$REPO" "$DEST"
 fi
 
 echo ""
-echo "-> Lanzando instalador..."
+echo "-> Launching installer..."
 echo ""
 
 exec zsh "$DEST/install.sh"
